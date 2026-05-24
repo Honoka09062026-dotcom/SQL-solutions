@@ -1,3 +1,6 @@
+--Problem: Sending vs. Opening Snaps
+--URL: https://datalemur.com/questions/time-spent-snaps
+
 WITH sum_of_time_spend
      AS (SELECT b.age_bucket,
                 a.activity_type,
