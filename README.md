@@ -1,7 +1,7 @@
 # SQL-solutions
 Explaining my solutions for interview questions
 
-# SQL Challenge1: Active User Retention (Facebook Interview Question)
+# SQL Challenge 1: Active User Retention (Facebook Interview Question)
 
 ## 📌 Problem Overview
 This repository contains a solution to the "Active User Retention" problem from DataLemur.
@@ -43,7 +43,7 @@ To solve this problem efficiently, I focused on data modularity and readability 
 
 ---
 
-# SQL Challenge2: Sending vs. Opening Snaps (Snapchat Interview Question)
+# SQL Challenge 2: Sending vs. Opening Snaps (Snapchat Interview Question)
 
 ## 📌 Problem Overview
 This repository contains a solution to the "Sending vs. Opening Snaps" problem from DataLemur.
