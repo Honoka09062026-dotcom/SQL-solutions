@@ -85,7 +85,7 @@ To solve this problem efficiently, I focused on data modularity and conditional 
 
 ---
 
-# SQL Challenge: Consecutive Filing Years (Intuit Interview Question)
+# SQL Challenge 3: Consecutive Filing Years (Intuit Interview Question)
 
 ## 📌 Problem Overview
 This repository contains a solution to the "Consecutive Filing Years" problem from DataLemur.
