@@ -82,3 +82,46 @@ To solve this problem efficiently, I focused on data modularity and conditional 
 
 ## 🔗 Original Problem
 [DataLemur - Sending vs. Opening Snaps](https://datalemur.com/questions/time-spent-snaps)
+
+---
+
+# SQL Challenge: Consecutive Filing Years (Intuit Interview Question)
+
+## 📌 Problem Overview
+This repository contains a solution to the "Consecutive Filing Years" problem from DataLemur.
+
+### Scenario
+As a data analyst, I need to identify individuals who have filed their taxes using any version of TurboTax for three or more consecutive years. Each user is allowed to file taxes once a year using a specific product.
+
+### Goal
+- Identify the user IDs of individuals with 3 or more consecutive years of TurboTax filings.
+- Display the output in ascending order of user IDs.
+
+---
+
+## 🛠️ Technical Approach
+
+To solve this problem efficiently, I focused on window functions and mathematical logic using **Common Table Expressions (CTEs)**.
+
+1. **Data Isolation (CTE)**:
+   - Created a CTE (`turbotax_years`) to filter for 'TurboTax' products using the `LIKE` operator.
+   - Used the `EXTRACT` function to retrieve the filing year as an integer.
+2. **Identifying Historical Filings**:
+   - Leveraged the **`LAG()` window function** with an offset of 2 (`LAG(filing_year, 2)`).
+   - Partitioned by `user_id` and ordered by `filing_year` to directly retrieve the year from two records prior.
+3. **Mathematical Filtering**:
+   - Calculated the difference between the current `filing_year` and the `year_2steps_back`.
+   - A difference of exactly `2` mathematically confirms 3 consecutive years of filing activity.
+
+---
+
+## 🚀 Key Learning Points
+- **Advanced Window Functions (`LAG` Offset)**: Discovered that `LAG(column, offset)` accepts a second argument. By using `LAG(filing_year, 2)`, I could cleanly look two rows back in a single step, making the query smarter and eliminating the need for nested CTEs.
+- **`EXTRACT` vs `TO_CHAR`**: Initially used `TO_CHAR` to extract the year, which caused a type error during the final filtering stage because it converts the output into a string. Switching to `EXTRACT(YEAR FROM filing_date)` kept the value as an integer, allowing the arithmetic operation (`filing_year - year_2steps_back = 2`) to work flawlessly.
+- **SQL Naming Conventions**: Encountered a syntax error when trying to use an alias starting with a number (`as 2steps_back_year`). Learned the strict rule that SQL aliases must begin with a letter (e.g., `year_2steps_back`).
+- **Regex in PostgreSQL**: While trying to match the string "TurboTax", I learned that PostgreSQL 14 does not support the standard `REGEXP` keyword. Instead, it relies on specific operators like `~` (case-sensitive) or `~*` (case-insensitive). For this problem, using the standard `LIKE` operator was the most straightforward approach.
+
+---
+
+## 🔗 Original Problem
+[DataLemur - Consecutive Filing Years](https://datalemur.com/questions/consecutive-filing-years)
