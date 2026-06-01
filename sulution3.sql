@@ -1,3 +1,6 @@
+--Problem: Consecutive Filing Years
+--URL: https://datalemur.com/questions/consecutive-filing-years
+
 WITH turbotax_years
      AS (SELECT user_id,
                 Extract(year FROM filing_date) AS filing_year
